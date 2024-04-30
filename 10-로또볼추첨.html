@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>자바스크립트</title>
+  <style>
+    .ball {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      font-size: 50px;
+      background-color: orange;
+      border-radius: 50%;
+      line-height: 100px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>로또볼 추첨</h1>
+
+  <!-- <span class="ball">1</span>
+  <span class="ball">2</span>
+  <span class="ball">3</span>
+  <span class="ball">4</span>
+  <span class="ball">5</span>
+  <span class="ball">6</span> -->
+  
+  <pre>
+    구현 알고리즘
+
+    1. 1~45번 구슬을 담은 변수 -> 배열 balls
+
+    2. 추출한 구슬을 저장할 변수 -> 배열 lotto
+
+      * 현재 남아있는 로또볼 중에서 하나를 선정한다.
+
+      1번째 회전에서는 45개중 1개 선정
+      2번째 회전에서는 44개중 1개 선정
+      3번째 회전에서는 43개중 1개 선정
+      4번째 회전에서는 42개중 1개 선정
+      5번째 회전에서는 41개중 1개 선정
+      6번째 회전에서는 40개중 1개 선정
+
+      선정된 로또볼을 lotto 배열변수에 추가한다.
+      balls 배열변수에서 이번에 추출한 로또볼을 제거한다.
+      이 과정을 6번 실행한다.
+      
+
+    </pre>
+    
+    <script>
+      const ball= [];
+      const lotto = [];
+      //ball배열 만들기(원소=1~45)
+      for(let i=0; i<45; i++){
+        ball[i] = i+1;
+      }
+
+      //for(ball배열 안에서 하나 선택(lotto배열저장) + 선택한거 제거하기) - 6번 반복
+      for(let k=0; k<6; k++){
+        //0~44중에 하나의 정수 -> ball[인덱스]로 활용
+        let num = Math.floor(Math.random()*(ball.length));
+        lotto[k] = ball[num];
+        ball.splice(num,1);
+        document.write(`<span class="ball">${lotto[k]}</span>`);
+      }
+
+      //while문으로,..
+      // let k=0;
+      // let num;
+      // while(k<6){
+      //   num = Math.floor(Math.random()*ball.length);
+      //   lotto[k] = ball[num];
+      //   ball.splice(num,1);
+      //   document.write(`<span class="ball">${lotto[k]}</span>`);
+      //   k++;
+      // }
+      
+
+      
+      </script>
+</body>
+
+</html>
